@@ -6,7 +6,7 @@ import (
 )
 
 func Getdb() (*sql.DB, error) {
-	var dns = "root:chrnbfj666@tcp(127.0.0.1:3306)/test"
+	var dns = "root:114514@tcp(127.0.0.1:3306)/test"
 	db, err := sql.Open("mysql", dns)
 	if err != nil {
 		return nil, err
