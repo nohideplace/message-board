@@ -3,6 +3,7 @@ package api
 import (
 	"database/sql"
 	"github.com/gin-gonic/gin"
+	"message-board/public_func"
 )
 
 //删除留言，注意不是将它的数据给删除了，而是给它打一个标记，让其内容不被显示（该留言已被删除），但是它的所有子评论还是要显示
@@ -22,7 +23,7 @@ func del_message(db *sql.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		cuname, err1 := c.Cookie("username")
 		//只有当cookie username和password同时存在时
-		resp, err := cookie_check(db, cuname, err1)
+		resp, err := public_func.Cookie_check(db, cuname, err1)
 		//当cookie有误时，返回json
 		if err != nil {
 			c.JSON(200, map[string]interface{}{"ok": false, "data": resp})

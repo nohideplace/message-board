@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"message-board/api"
 	"message-board/public_func"
+	"message-board/service"
 )
 
 func main() {
@@ -12,6 +12,6 @@ func main() {
 		fmt.Println("数据库连接失败")
 		return
 	}
-	router := api.APIs(db)
+	router := service.APIs(db)
 	router.Run("0.0.0.0:5000")
 }
